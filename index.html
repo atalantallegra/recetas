@@ -23,21 +23,21 @@
 
     <script>
         // Cargar el JSON
-        fetch("assets/recetas/recetas.json")
+        fetch("./assets/recetas/recetas.json")
             .then(res => res.json())
             .then(recetas => {
                 const lista = document.getElementById("lista-recetas");
 
-                recetas.forEach((receta, i) => {
-                    const li = document.createElement("li");
-
-                    // Enlace a la plantilla con ID por querystring
-                    li.innerHTML = `<a href="assets/recetas/plantilla.html?id=${i}">${receta.titulo}</a>`;
-
-                    lista.appendChild(li);
+                recetas.forEach((receta, index) => {
+                    lista.innerHTML += `
+                        <li>
+                            <a href="./assets/recetas/plantilla.html?id=${index}">
+                                ${receta.titulo}
+                            </a>
+                        </li>
+                    `;
                 });
-            })
-            .catch(err => console.error(err));
+            });
     </script>
 </body>
 </html>
