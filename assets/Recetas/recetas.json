@@ -1,0 +1,36 @@
+[
+  {
+    "titulo": "Pasta al pesto",
+    "tiempo": "30 min",
+    "raciones": 2,
+    "ingredientes": [
+      "200 g de pasta",
+      "60 g de albahaca fresca",
+      "30 g de piñones",
+      "30 ml de aceite de oliva",
+      "Sal y pimienta al gusto"
+    ],
+    "instrucciones": [
+      "Cocer la pasta en agua con sal hasta que esté al dente.",
+      "Triturar la albahaca, piñones y aceite hasta obtener una salsa homogénea.",
+      "Mezclar la pasta con el pesto y servir."
+    ]
+  },
+  {
+    "titulo": "Ensalada César",
+    "tiempo": "15 min",
+    "raciones": 2,
+    "ingredientes": [
+      "Lechuga romana",
+      "100 g de pollo a la plancha",
+      "50 g de queso parmesano",
+      "Croutons",
+      "Salsa César"
+    ],
+    "instrucciones": [
+      "Lavar y cortar la lechuga.",
+      "Cortar el pollo en tiras.",
+      "Mezclar todo con la salsa y añadir croutons y parmesano."
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mi Recetario</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .receta { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
+    h1 { text-align: center; }
+    h2 { margin-top: 10px; }
+    ul, ol { margin: 0; padding-left: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Mi Recetario</h1>
+  <div id="contenedor"></div>
+
+  <script>
+    fetch('recetas.json')
+      .then(response => response.json())
+      .then(recetas => {
+        const contenedor = document.getElementById('contenedor');
+        recetas.forEach(receta => {
+          const html = `
+            <div class="receta">
+              <h2>${receta.titulo}</h2>
+              <p><strong>${receta.tiempo}</strong> · ${receta.raciones} raciones</p>
+              <h3>Ingredientes</h3>
+              <ul>${receta.ingredientes.map(i => `<li>${i}</li>`).join('')}</ul>
+              <h3>Instrucciones</h3>
+              <ol>${receta.instrucciones.map(p => `<li>${p}</li>`).join('')}</ol>
+            </div>
+          `;
+          contenedor.innerHTML += html;
+        });
+      })
+      .catch(error => console.error('Error cargando recetas:', error));
+  </script>
+</body>
+</html>
