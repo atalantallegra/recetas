@@ -16,11 +16,12 @@
   <h1>Mi Recetario</h1>
   <div id="contenedor"></div>
 
-  <script>
+<script>
   // Obtener el ID desde ?id=__
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get("id"));
 
+  // Cargar el JSON desde la MISMA carpeta que plantilla.html
   fetch('./recetas.json')
     .then(response => response.json())
     .then(recetas => {
@@ -43,5 +44,7 @@
     .catch(error => console.error('Error cargando recetas:', error));
 </script>
 
+
 </body>
 </html>
+
