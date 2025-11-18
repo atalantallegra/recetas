@@ -23,7 +23,7 @@
 
     <script>
         // Cargar el JSON
-        fetch("assets/recetas.json")
+        fetch("assets/recetas/recetas.json")
             .then(res => res.json())
             .then(recetas => {
                 const lista = document.getElementById("lista-recetas");
@@ -32,7 +32,7 @@
                     const li = document.createElement("li");
 
                     // Enlace a la plantilla con ID por querystring
-                    li.innerHTML = `<a href="assets/plantilla.html?id=${i}">${receta.titulo}</a>`;
+                    li.innerHTML = `<a href="assets/recetas/plantilla.html?id=${i}">${receta.titulo}</a>`;
 
                     lista.appendChild(li);
                 });
