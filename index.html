@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetario de Carlota</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Recetario de Carlota</h1>
+    </header>
+
+    <section>
+        <h2>Recetas</h2>
+        <ul id="lista-recetas"></ul>
+    </section>
+
+    <footer>
+        <p>Un programa presentado por Jordi Hurtado</p>
+    </footer>
+
+    <script>
+        // Cargar el JSON
+        fetch("assets/recetas.json")
+            .then(res => res.json())
+            .then(recetas => {
+                const lista = document.getElementById("lista-recetas");
+
+                recetas.forEach((receta, i) => {
+                    const li = document.createElement("li");
+
+                    // Enlace a la plantilla con ID por querystring
+                    li.innerHTML = `<a href="assets/plantilla.html?id=${i}">${receta.titulo}</a>`;
+
+                    lista.appendChild(li);
+                });
+            })
+            .catch(err => console.error(err));
+    </script>
+</body>
+</html>
