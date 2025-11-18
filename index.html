@@ -22,22 +22,18 @@
     </footer>
 
     <script>
-        // Cargar el JSON
-        fetch("./assets/recetas/recetas.json")
-            .then(res => res.json())
-            .then(recetas => {
-                const lista = document.getElementById("lista-recetas");
+fetch("./assets/recetas/recetas.json")
+  .then(r => r.json())
+  .then(recetas => {
+      const lista = document.getElementById("lista-recetas");
+      recetas.forEach((receta, index) => {
+          lista.innerHTML += `
+            <li><a href="./assets/recetas/plantilla.html?id=${index}">
+                ${receta.titulo}
+            </a></li>`;
+      });
+  });
+</script>
 
-                recetas.forEach((receta, index) => {
-                    lista.innerHTML += `
-                        <li>
-                            <a href="./assets/recetas/plantilla.html?id=${index}">
-                                ${receta.titulo}
-                            </a>
-                        </li>
-                    `;
-                });
-            });
-    </script>
 </body>
 </html>
