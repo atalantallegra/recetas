@@ -17,25 +17,31 @@
   <div id="contenedor"></div>
 
   <script>
-    fetch('recetas.json')
-      .then(response => response.json())
-      .then(recetas => {
-        const contenedor = document.getElementById('contenedor');
-        recetas.forEach(receta => {
-          const html = `
-            <div class="receta">
-              <h2>${receta.titulo}</h2>
-              <p><strong>${receta.tiempo}</strong> · ${receta.raciones} raciones</p>
-              <h3>Ingredientes</h3>
-              <ul>${receta.ingredientes.map(i => `<li>${i}</li>`).join('')}</ul>
-              <h3>Instrucciones</h3>
-              <ol>${receta.instrucciones.map(p => `<li>${p}</li>`).join('')}</ol>
-            </div>
-          `;
-          contenedor.innerHTML += html;
-        });
-      })
-      .catch(error => console.error('Error cargando recetas:', error));
-  </script>
+  // Obtener el ID desde ?id=__
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
+
+  fetch('./recetas.json')
+    .then(response => response.json())
+    .then(recetas => {
+      const receta = recetas[id];
+      const contenedor = document.getElementById('contenedor');
+
+      const html = `
+        <div class="receta">
+          <h2>${receta.titulo}</h2>
+          <p><strong>${receta.tiempo}</strong> · ${receta.raciones} raciones</p>
+          <h3>Ingredientes</h3>
+          <ul>${receta.ingredientes.map(i => `<li>${i}</li>`).join('')}</ul>
+          <h3>Instrucciones</h3>
+          <ol>${receta.instrucciones.map(p => `<li>${p}</li>`).join('')}</ol>
+        </div>
+      `;
+
+      contenedor.innerHTML = html;
+    })
+    .catch(error => console.error('Error cargando recetas:', error));
+</script>
+
 </body>
 </html>
